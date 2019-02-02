@@ -1,6 +1,6 @@
-(() => {
+getCompanies = () => {
 
-  const companies = [
+  return [
     {id: 1, name: 'Amazon', location: 'Seattle'},
     {id: 2, name: 'Apple', location: 'Cupertino'},
     {id: 3, name: 'Facebook', location: 'Menlo Park'},
@@ -9,4 +9,4 @@
     {id: 6, name: 'Tesla', location: 'Palo Alto'}
   ]
 
-})()
+}
