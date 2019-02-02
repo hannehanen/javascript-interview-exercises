@@ -10,3 +10,9 @@ getCompanies = () => {
   ]
 
 }
+
+clickedMethod = (e) =>{
+  let some = e.target.getAttribute("name");
+  console.log("Clicked on companie: " + some)
+
+}

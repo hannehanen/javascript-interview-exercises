@@ -12,13 +12,13 @@
   <ul id="list"></ul>
   <script src="script.js"></script>
   <script>
-
     let ul = document.getElementById("list");
-
     getCompanies().forEach(companie => {
       let listElement = document.createElement("li");
-      listElement.appendChild(document.createTextNode("Name: "+companie.name+ " Location: "+companie.location));
-      ul.appendChild(listElement)
+      listElement.appendChild(document.createTextNode("Name: " + companie.name + " Location: " + companie.location));
+      listElement.onclick = clickedMethod;
+      listElement.setAttribute("name", companie.name);
+      ul.appendChild(listElement);
     });
   </script>
 </body>
