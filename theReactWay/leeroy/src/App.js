@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
 
 class App extends Component {
 
   state = {
-    companies: [
-      { id: 1, name: 'Amazon', location: 'Seattle' },
-      { id: 2, name: 'Apple', location: 'Cupertino' },
-      { id: 3, name: 'Facebook', location: 'Menlo Park' },
-      { id: 4, name: 'Google', location: 'Mountain View' },
-      { id: 5, name: 'Leeroy', location: 'Sundsvall' },
-      { id: 6, name: 'Tesla', location: 'Palo Alto' }
-    ],
     filterList: []
   }
+
+componentWillMount () {
+  console.log(this.props.companies)
+}
 
   addFilter = (e) => {
     this.setState(state => {
@@ -36,9 +33,9 @@ class App extends Component {
   }
 
   render() {
-    let listToReturn = this.state.companies;
+    let listToReturn = this.props.companies;
     if (this.state.filterList.length > 0) {
-      listToReturn = this.state.companies.map(comp => {
+      listToReturn = this.props.companies.map(comp => {
 
         return this.state.filterList.includes(comp.location) ? comp : null;
       });
@@ -63,7 +60,7 @@ class App extends Component {
         <div>
           Current filters (Only exact matches currently.):
          <ul>
-            {this.state.filterList.map(filter => <li>{filter}</li>)}
+            {this.state.filterList.map( (filter,key) => <li key={key}>{filter}</li>)}
           </ul>
 
         </div>
@@ -71,5 +68,9 @@ class App extends Component {
     );
   }
 }
-
-export default App;
+const mapStateToProps = function(state) {
+  return {
+    companies: state.companies
+  }
+}
+export default connect(mapStateToProps,null)(App);
